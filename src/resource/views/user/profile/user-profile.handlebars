@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3>Thông tin cá nhân</h3>
+        </div>
+
+        <div class="card-body">
+
+            <div class="mb-3">
+                <label class="fw-bold">Tên đăng nhập</label>
+                <input type="text" class="form-control" value="{{user.username}}" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label class="fw-bold">Vai trò</label>
+                <input type="text" class="form-control" value="{{user.role}}" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label class="fw-bold">Trạng thái</label>
+                <input type="text" class="form-control" value="{{user.status}}" readonly>
+            </div>
+
+            <a href="/user/home" class="btn btn-secondary">
+                Quay lại
+            </a>
+
+            <a href="/user/change-profile" class="btn btn-secondary">
+                Thay đổi thông tin tài khoản
+            </a>
+        </div>
+    </div>
+</div>

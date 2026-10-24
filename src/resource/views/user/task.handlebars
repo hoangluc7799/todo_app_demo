@@ -1,0 +1,88 @@
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Danh sách công việc của tôi</h3>
+        <a href="/task/create" class="btn btn-success">
+            + Thêm công việc
+        </a>
+    </div>
+
+    <form action="/task" method="GET" class="mb-3">
+        <div class="input-group" style="max-width: 300px;">
+            <input type="text" name="search" class="form-control" placeholder="Tìm kiếm công việc..." value="{{searchKeyword}}">
+            <button class="btn btn-outline-primary" type="submit">Tìm</button>
+        </div>
+    </form>
+
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>STT</th>
+                <th>Tên công việc</th>
+                <th>Mô tả</th> 
+                <th>Trạng thái</th>
+                <th>Ngày hết hạn</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each tasks}}
+            <tr>
+                <!-- Bắt buộc phải có {{stt}} ở đây -->
+                <td>{{stt}}</td>
+                <td>{{Title}}</td>
+                <td>{{Description}}</td> 
+                <td>{{Status0}}</td>
+                <td>{{Duedate}}</td>
+                <td>
+                    <a href="/task/{{_id}}/edit/" class="btn btn-warning btn-sm">
+                        Sửa
+                    </a>
+                    <form action="/task/{{_id}}/delete?_method=DELETE" 
+                        method="POST" 
+                        style="display:inline;">
+                        <button type="submit"
+                            class="btn btn-danger btn-sm"
+                            onclick="return confirm('Bạn có chắc muốn xóa công việc này?')">
+                            Xóa
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="6" class="text-center">
+                    Hiện tại bạn chưa có công việc nào!
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <!-- Khối phân trang -->
+    {{#if showPagination}}
+    <nav aria-label="Page navigation" class="my-4">
+        <ul class="pagination pagination-md justify-content-center">
+            
+            <li class="page-item {{#unless hasPrev}}disabled{{/unless}}">
+                <a class="page-link" href="/task?page={{prevPage}}{{#if searchKeyword}}&search={{searchKeyword}}{{/if}}">
+                    &laquo; Trước
+                </a>
+            </li>
+
+            <li class="page-item disabled mx-1">
+                <span class="page-link bg-light text-dark">
+                    Trang {{currentPage}} / {{totalPages}}
+                </span>
+            </li>
+
+            <li class="page-item {{#unless hasNext}}disabled{{/unless}}">
+                <a class="page-link" href="/task?page={{nextPage}}{{#if searchKeyword}}&search={{searchKeyword}}{{/if}}">
+                    Sau &raquo;
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+    {{/if}}
+</div>

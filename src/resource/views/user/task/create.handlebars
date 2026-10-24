@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-info text-white"><h4>Thêm công việc</h4></div>
+        <div class="card-body">
+            <form action="/task/create" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Tiêu đề</label>
+                    <input type="text" name="Title" class="form-control" value="{{task.Title}}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Mô tả</label>
+                    <textarea name="Description" class="form-control">{{task.Description}}</textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ngày hết hạn</label>
+                    <input type="date" name="Duedate" class="form-control" 
+                           value="{{#if task.Duedate}}{{formatDate task.Duedate 'YYYY-MM-DD'}}{{/if}}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Trạng thái</label>
+                    <select name="Status0" class="form-select">
+                        <option value="Chưa Hoàn Thành" {{#if (eq task.Status0 'Chưa Hoàn Thành')}}selected{{/if}}>Chưa Hoàn Thành</option>
+                        <option value="Hoàn Thành" {{#if (eq task.Status0 'Hoàn Thành')}}selected{{/if}}>Hoàn Thành</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Thêm</button>
+                <a href="/task" class="btn btn-secondary">Hủy</a>
+            </form>
+        </div>
+    </div>
+</div>

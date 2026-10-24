@@ -1,0 +1,96 @@
+
+        <section class="content-header">
+            <div class="container-fluid">
+                
+                <div class="row mb-4 align-items-center">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Danh sách người dùng hệ thống</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <form action="/admin/manage-users" method="GET" class="form-inline justify-content-sm-end mt-2 mt-sm-0">
+                            <div class="input-group" style="width: 100%; max-width: 350px;">
+                                <input type="text" name="search" class="form-control" placeholder="Tìm kiếm người dùng..." value="{{searchKeyword}}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+
+<table class="table" style="font-size: 1.2rem;"> 
+    <thead>
+        <tr>
+            <th scope="col" style="width: 50px">#</th>
+            <th scope="col">Tên người dùng</th>
+            <th scope="col">Vai trò</th>
+            <th scope="col">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each users}}
+        <tr>
+            <!-- STT hiển thị đơn giản dựa trên index -->
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.username}}</td>
+            <td>{{this.role}}</td>
+            <td>
+                {{#if (eq this.status "lock")}}
+                    <a href="/admin/user/{{this._id}}/unlock" class="text-success">Mở khóa</a>
+                {{else}}
+                    <a href="/admin/user/{{this._id}}/lock" class="text-warning">Khóa</a>
+                {{/if}} 
+                | 
+                <form action="/admin/user/{{this._id}}/delete" method="POST" style="display:inline;">
+                    <button type="submit" 
+                            class="text-danger" 
+                            style="border:none; background:none; cursor:pointer;" 
+                            onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?')">
+                        Xóa
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {{else}}
+        <tr>
+            <td colspan="4" class="text-center">Dữ liệu trống</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+{{#if showPagination}}
+<nav aria-label="Page navigation" class="my-4">
+    <ul class="pagination pagination-md justify-content-center">
+        
+        <!-- Nút TRANG TRƯỚC -->
+        <li class="page-item {{#unless hasPrev}}disabled{{/unless}}">
+            <a class="page-link rounded-start-pill px-3 shadow-sm" href="/admin/manage-users?page={{prevPage}}{{#if searchKeyword}}&search={{searchKeyword}}{{/if}}">
+                <i class="fas fa-chevron-left me-1"></i> Trước
+            </a>
+        </li>
+
+        
+        <li class="page-item disabled mx-1">
+            <span class="page-link border-0 bg-transparent text-secondary fw-semibold d-flex align-items-center">
+                Trang {{currentPage}} / {{totalPages}}
+            </span>
+        </li>
+
+        <!-- Nút TRANG SAU -->
+        <li class="page-item {{#unless hasNext}}disabled{{/unless}}">
+            <a class="page-link rounded-end-pill px-3 shadow-sm" href="/admin/manage-users?page={{nextPage}}{{#if searchKeyword}}&search={{searchKeyword}}{{/if}}">
+                Sau <i class="fas fa-chevron-right ms-1"></i>
+            </a>
+        </li>
+
+    </ul>
+</nav>
+{{/if}}
+            </div>
+        </section>
+    

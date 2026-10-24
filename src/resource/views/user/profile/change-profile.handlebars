@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3>Thông tin cá nhân</h3>
+        </div>
+
+        <div class="card-body">
+            <form action="/user/change-profile" method="POST">
+                <div class="mb-3">
+                    <label class="fw-bold">Tên đăng nhập</label>
+                    <input type="text" name="username" class="form-control" value="{{user.username}}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="fw-bold">Mật khẩu mới</label>
+                    <input type="password" name="password" class="form-control" placeholder="Nhập mật khẩu mới nếu muốn thay đổi">
+                </div>
+
+                <div class="mt-4">
+                    <a href="/user/home" class="btn btn-secondary">
+                        Quay lại
+                    </a>
+
+                    <button type="submit" class="btn btn-primary">
+                        Xác nhận thay đổi
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

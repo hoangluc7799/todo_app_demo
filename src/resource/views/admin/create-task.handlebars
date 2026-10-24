@@ -1,0 +1,52 @@
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h4>Thêm công việc mới</h4>
+        </div>
+        <div class="card-body">
+            <form action="/admin/task/create" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Tiêu đề</label>
+                    <input type="text" name="Title" class="form-control" placeholder="Nhập tiêu đề công việc" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Mô tả</label>
+                    <textarea name="Description" class="form-control" rows="3" placeholder="Nhập mô tả chi tiết"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Hạn hoàn thành</label>
+                    <input type="date" name="Duedate" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Trạng thái</label>
+                    <select name="Status0" class="form-select">
+                        <option value="Chưa Hoàn Thành">Chưa Hoàn Thành</option>
+                        <option value="Hoàn Thành">Hoàn Thành</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Người tạo</label>
+                    <select name="UserId" class="form-select" required>
+                        <option value="" disabled selected>-- Chọn người tạo --</option>
+                        {{#each users}}
+                            <option value="{{this._id}}">
+                                {{this.username}} 
+                            </option>
+                        {{else}}
+                            <option value="" disabled>Không có người dùng nào</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary px-4">Thêm mới</button>
+                    <a href="/admin/manage-tasks" class="btn btn-secondary px-4">Hủy</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

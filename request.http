@@ -1,0 +1,29 @@
+### Test truy cập Home với Token vừa login
+GET http://localhost:3000/user/home
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMzUxYWRmN2JkYTUwYmU4YmZkMDJmMCIsInVzZXJuYW1lIjoidXNlcjEiLCJpYXQiOjE3ODIyMTk0OTAsImV4cCI6MTc4MjIyMzA5MH0.CvMNWaNpy32YlKK10Mkk36f6xZ8B2bsAOHLuwtnkNmE
+
+###
+
+GET http://localhost:3000/task
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMzUxYWRmN2JkYTUwYmU4YmZkMDJmMCIsInVzZXJuYW1lIjoidXNlcjEiLCJpYXQiOjE3ODIyMTk0OTAsImV4cCI6MTc4MjIyMzA5MH0.CvMNWaNpy32YlKK10Mkk36f6xZ8B2bsAOHLuwtnkNmE
+
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+    "username" : "user1",
+    "password" : "password123"
+}
+
+# ###
+# //Khi logout thì accessToken bị xóa -> k thể đến /token lấy acces mới mà phải login lại 
+# POST http://localhost:5000/token
+# Content-Type: application/json
+
+# {
+#     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzgxNzY3MTYyLCJleHAiOjE3ODE3NjczNjJ9.wjbpZX4sX8Z_EPO1ucQMSNTjOglkr0vYXTcFDS6xjWc"
+# }
+
+# ###
+# DELETE http://localhost:5000/logout
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJoZW5yeSIsImlhdCI6MTc4MTc2ODUyOSwiZXhwIjoxNzgxNzY4NzI5fQ.mhnWwU_2oPL4R4FNhVwYLif12Tf-XLI7e9FahCx_Lpk

@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-success text-white text-center py-3 rounded-top-4">
+                    <h4 class="mb-0">ĐĂNG KÝ TÀI KHOẢN</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form action="/user/register" method="POST">
+                        <div class="mb-3">
+                            <label for="username" class="form-label fw-bold">Tên đăng nhập</label>
+                            <input type="text" class="form-control {{#if errors.username}}is-invalid{{/if}}" id="username" name="username" placeholder="Nhập username..." value="{{oldData.username}}" required>
+                            {{#if errors.username}}
+                                <div class="invalid-feedback">{{errors.username}}</div>
+                            {{/if}}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password" class="form-label fw-bold">Mật khẩu</label>
+                            <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" name="password" placeholder="Nhập mật khẩu..." required>
+                            {{#if errors.password}}
+                                <div class="invalid-feedback">{{errors.password}}</div>
+                            {{/if}}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label fw-bold">Xác nhận mật khẩu</label>
+                            <input type="password" class="form-control {{#if errors.confirmPassword}}is-invalid{{/if}}" id="confirmPassword" name="confirmPassword" placeholder="Nhập lại mật khẩu..." required>
+                            {{#if errors.confirmPassword}}
+                                <div class="invalid-feedback">{{errors.confirmPassword}}</div>
+                            {{/if}}
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-success btn-lg shadow-sm">Đăng ký</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center py-3 bg-light border-0">
+                    <p class="mb-0 text-muted">Đã có tài khoản? <a href="/user/login" class="text-success text-decoration-none fw-bold">Đăng nhập ngay</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
