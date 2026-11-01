@@ -39,12 +39,12 @@
             <td>{{this.role}}</td>
             <td>
                 {{#if (eq this.status "lock")}}
-                    <a href="/admin/user/{{this._id}}/unlock" class="text-success">Mở khóa</a>
+                    <a href="/admin/{{this._id}}/unlock" class="text-success">Mở khóa</a>
                 {{else}}
-                    <a href="/admin/user/{{this._id}}/lock" class="text-warning">Khóa</a>
+                    <a href="/admin/{{this._id}}/lock" class="text-warning">Khóa</a>
                 {{/if}} 
                 | 
-                <form action="/admin/user/{{this._id}}/delete" method="POST" style="display:inline;">
+                <form action="/admin/{{this._id}}/delete" method="POST" style="display:inline;">
                     <button type="submit" 
                             class="text-danger" 
                             style="border:none; background:none; cursor:pointer;" 

@@ -4,8 +4,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon --inspect=9230 src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "sass --watch src/resource/scss:src/resource/public/css"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -34,7 +33,9 @@
     "jsonwebtoken": "^9.0.3",
     "method-override": "^3.0.0",
     "mongoose": "^9.7.1",
-    "mongoose-slug-updater": "^3.3.0"
+    "mongoose-slug-updater": "^3.3.0",
+    "swagger-jsdoc": "^6.3.0",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "morgan": "^1.10.1",
